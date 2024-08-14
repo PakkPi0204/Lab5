@@ -24,7 +24,7 @@ if (route.query.pageSize) {
 </script>
 
 <template>
-  <div id="layout">
+  <div id="text-center font-sans text-gray-700 antialias">
     <header>
       <div id="flashMessage" v-if="message">
         <h4>{{ message }}</h4>
@@ -48,13 +48,6 @@ if (route.query.pageSize) {
 </template>
 
 <style>
-#layout {
-  font-family: Avenir, Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
 nav {
   padding: 30px;
