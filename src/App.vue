@@ -5,6 +5,7 @@ import { storeToRefs } from 'pinia';
 const store = useMessageStore()
 const { message } = storeToRefs(store)
 import { ref } from 'vue'
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const pageSizes = [1, 2, 4, 6, 8, 10]
 const pageSize = ref(pageSizes[1])
@@ -24,6 +25,7 @@ if (route.query.pageSize) {
 </script>
 
 <template>
+  <SpeedInsights />
   <div class="text-center font-sans text-gray-700 antialias">
     <header>
       <div id="flashMessage" class="animate-fade" v-if="message">
