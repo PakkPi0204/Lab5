@@ -42,16 +42,33 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1>Event For Good</h1>
+  <h1 class="text-center text-2xl font-bold mb-4">Events For Good</h1>
   <div class="flex flex-col items-center">
     <EventCard v-for="event in events" :key="event.id" :event="event" />
-    <StudentList v-for="event in events" :key="event.id" :event="event" />
-    <div class="pagination">
-      <RouterLink id="page-prev" :to="{ name: 'event-list-view', query: { page: page - 1, pageSize: pageSize } }" rel="prev" v-if="page != 1">&#60; Prev Page</RouterLink>
-      <RouterLink id="page-next" :to="{ name: 'event-list-view', query: { page: page + 1, pageSize: pageSize } }" rel="next" v-if="hasNextPage">Next Page &#62;</RouterLink>
+
+    <div class="flex w-72 justify-between mt-4">
+      <RouterLink
+        id="page-prev"
+        :to="{ name: 'event-list-view', query: { page: page - 1, pageSize: getPageSize() } }"
+        rel="prev"
+        v-if="page > 1"
+        class="text-blue-500 hover:text-blue-700 text-left flex-1"
+      >
+        &#60; Prev Page
+      </RouterLink>
+      <RouterLink
+        id="page-next"
+        :to="{ name: 'event-list-view', query: { page: page + 1, pageSize: getPageSize() } }"
+        rel="next"
+        v-if="hasNextPage"
+        class="text-blue-500 hover:text-blue-700 text-right flex-1"
+      >
+        Next Page &#62;
+      </RouterLink>
     </div>
   </div>
-</template>
+</template> 
+
 
 <style scoped>
 .pagination {

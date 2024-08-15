@@ -25,8 +25,8 @@ if (route.query.pageSize) {
 </script>
 
 <template>
-  <SpeedInsights />
-  <div class="text-center font-sans text-gray-700 antialias">
+  <SpeedInsight />
+  <div class="text-center font-sans text-gray-700 antialiased">
     <header>
       <div id="flashMessage" class="animate-fade" v-if="message">
         <h4>{{ message }}</h4>
@@ -34,22 +34,36 @@ if (route.query.pageSize) {
       <h1>Deploy with Vercel</h1>
       <div class="wrapper">
         <nav class="py-6">
-          <RouterLink class="font-bold text-gray-700"
-          exact-active-class="text-green-500" :to="{ name: 'event-list-view'
-          }">Event</RouterLink> | 
-                     <RouterLink class="font-bold text-gray-700"
-          exact-active-class="text-green-500" :to="{ name: 'about'
-          }">About</RouterLink> |      
-          <RouterLink :to="{ name: 'Student' }">Student</RouterLink>    
+          <RouterLink
+            class="font-bold text-gray-700"
+            exact-active-class="text-green-500"
+            :to="{ name: 'event-list-view' }"
+            >Event</RouterLink
+          >
+          <span class="mx-2">|</span>
+          <RouterLink
+            class="font-bold text-gray-700"
+            exact-active-class="text-green-500"
+            :to="{ name: 'about' }"
+            >About</RouterLink
+          >
         </nav>
-        <div>
-          <label for="page-size">Event per page</label>
-          <select id="page-size" v-model="pageSize" @change="updatePageSize">
-            <option v-for="size in pageSizes" :key="size" :value="size">{{ size }}</option>
-          </select>
-        </div>
+      </div>
+      <!-- Page Size Selection -->
+      <div class="mt-4">
+        <label class="mr-2">Set Page Size: </label>
+        <span v-for="size in [1, 2, 3, 4, 5, 6]" :key="size" class="mr-2">
+          <RouterLink
+            class="text-gray-700 hover:text-green-500"
+            exact-active-class="text-green-500"
+            :to="{ name: 'event-list-view', query: { ...route.query, pageSize: size } }"
+          >
+            {{ size }}
+          </RouterLink>
+        </span>
       </div>
     </header>
+
     <RouterView />
   </div>
 </template>
