@@ -49,7 +49,7 @@ onMounted(() => {
     <div class="flex w-72 justify-between mt-4">
       <RouterLink
         id="page-prev"
-        :to="{ name: 'event-list-view', query: { page: page - 1, pageSize: getPageSize() } }"
+        :to="{ name: 'event-list-view', query: { page: page - 1, pageSize: pageSize } }"
         rel="prev"
         v-if="page > 1"
         class="text-blue-500 hover:text-blue-700 text-left flex-1"
@@ -58,7 +58,7 @@ onMounted(() => {
       </RouterLink>
       <RouterLink
         id="page-next"
-        :to="{ name: 'event-list-view', query: { page: page + 1, pageSize: getPageSize() } }"
+        :to="{ name: 'event-list-view', query: { page: page + 1, pageSize: pageSize } }"
         rel="next"
         v-if="hasNextPage"
         class="text-blue-500 hover:text-blue-700 text-right flex-1"
